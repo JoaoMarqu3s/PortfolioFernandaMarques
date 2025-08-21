@@ -1,0 +1,500 @@
+/* Variáveis CSS (Root) */
+:root {
+    --primary-color: #7d7046;
+    --secondary-color: #db590e;
+    --text-color: #333;
+    --light-text-color: #f4f4f4;
+    --background-color: #ffffff;
+    --dark-background-color: #ecf0f1;
+    --font-family: 'Helvetica Neue', Arial, sans-serif;
+    --font-size: 1.1rem;
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    line-height: 1.2;
+    margin-bottom: 0.8em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Header Fixo e Navegação */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 500;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 0.3rem;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after, .nav-links a.active::after {
+    width: 100%;
+}
+
+/* Seções */
+.section {
+    padding: 6rem 1rem;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.dark-bg {
+    background-color: var(--dark-background-color);
+}
+
+/* Seção Início (Hero) */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 1s;
+    color: var(--light-text-color);
+    background: linear-gradient(rgba(124, 121, 86, 0.7), rgba(93, 95, 72, 0.7)), url('assets/images/fundo1.png') no-repeat center center/cover;
+}
+.hero-section:hover {
+    transform: scale(1.05);
+    transition: 1s;
+    cursor: grab;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--light-text-color);
+    font-weight: bold;
+    max-width: 900px;
+}
+
+
+.hero-content p {
+    font-size: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Seção Sobre Mim (Nova Seção de Marcos) */
+.milestone-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.milestone-card {
+    background-color: var(--dark-background-color);
+    padding: 2.5rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.milestone-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.milestone-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.milestone-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Seção Metodologia (Layout de Cartões) */
+.method-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.step-card {
+    flex: 1 1 300px;
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.6s ease;
+}
+
+.step-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px) scale(1.08);
+}
+
+.step-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.call-to-action {
+    text-align: center;
+    font-style: italic;
+    margin-top: 3rem;
+    font-size: 1.2rem;
+}
+
+/* Seção Aulas (Layout com Imagem e Hover) */
+#aulas {
+    padding-bottom: 5rem;
+}
+
+.aula-cards-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: stretch;
+}
+
+.aula-card {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    min-width: 200px;
+    max-width: 500px;
+}
+
+.aula-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.aula-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--light-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 2rem;
+    text-align: center;
+}
+
+.aula-card:hover .aula-overlay {
+    opacity: 1;
+}
+
+.aula-card:hover img {
+    transform: scale(1.05); /* Efeito de zoom na imagem */
+}
+
+.aula-overlay h3 {
+    color: var(--light-text-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.aula-overlay p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.aula-button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.aula-button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Seção Contato (Reformulada) */
+.contact-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.contact-info,
+.contact-form-wrapper {
+    flex: 1 1 45%;
+    max-width: 500px;
+}
+
+.contact-info {
+    text-align: center;
+    background-color: var(--background-color);
+    padding: 2.5rem;
+    border-radius: 10px;
+    height: 27rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 9.1rem;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.contact-link {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.contact-link:hover {
+    background-color: var(--primary-color);
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: var(--background-color);
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+#contact-form input, #contact-form textarea {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#contact-form button {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Animações (JavaScript) */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==================================== */
+/* RESPONSIVIDADE */
+/* ==================================== */
+
+/* Tablet (768px a 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile (até 767px) */
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    .nav-links {
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+    
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .section {
+        padding: 4rem 1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-section {
+        height: 80vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .method-steps, .contact-grid, .classroom-options {
+        flex-direction: column;
+    }
+
+    .step-card, .contact-info, .contact-form-wrapper, .option-card {
+        flex: 1 1 100%;
+    }
+    
+    /* Novo layout Sobre em Mobile */
+    .milestone-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Responsividade para a seção de Aulas */
+    .aula-cards-container {
+        flex-direction: column;
+    }
+}
