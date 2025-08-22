@@ -1,11 +1,11 @@
 /* Variáveis CSS (Root) */
 :root {
-    --primary-color: #7d7046;
-    --secondary-color: #db590e;
+    --primary-color: #7d6f47;
+    --secondary-color: #b0a16c;
     --text-color: #333;
     --light-text-color: #f4f4f4;
     --background-color: #ffffff;
-    --dark-background-color: #ecf0f1;
+    --dark-background-color: #efefef;
     --font-family: 'Helvetica Neue', Arial, sans-serif;
     --font-size: 1.1rem;
 }
@@ -55,28 +55,34 @@ ul {
     list-style: none;
 }
 
+
 /* Header Fixo e Navegação */
 .header {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.95);
+    padding-left: 25rem;
+    background-color: rgba(255, 255, 255, 0.52);
     backdrop-filter: blur(10px);
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
+    
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
     color: var(--primary-color);
 }
@@ -108,6 +114,113 @@ ul {
     width: 100%;
 }
 
+/* Estilos para o Menu Hambúrguer */
+.hamburger-menu {
+    display: none; /* Inicia escondido em telas grandes */
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+    margin: 1rem;
+    z-index: 1001;
+}
+
+.hamburger-menu span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animação para o "X" */
+.hamburger-menu.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Estilos para o menu quando está aberto em mobile (OVERLAY) */
+.nav-links.nav-open {
+    transform: translateX(0) !important;
+}
+
+/* Nova regra para impedir a rolagem do corpo */
+body.no-scroll {
+    overflow: hidden;
+}
+
+
+/* ==================================== */
+/* RESPONSIVIDADE */
+/* ==================================== */
+
+/* Mobile (até 767px) */
+@media (max-width: 1044px) {
+    .header{
+        padding-left: 1rem;
+    }
+
+    .navbar {
+        padding: 0.5rem;
+        /* Remove o flex-direction: column para que os itens fiquem lado a lado */
+        flex-direction: row; 
+    }
+    
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: var(--dark-background-color);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        gap: 3rem;
+        z-index: 999;
+    }
+
+    .nav-links a {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    .nav-links a::after {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    /* Corrige o X torto */
+    .hamburger-menu.open span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+    
+    .hamburger-menu.open span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+    }
+
+    .hero-section{
+        background-size: cover;
+        background-position: left center;
+    }
+}
+
+
 /* Seções */
 .section {
     padding: 6rem 1rem;
@@ -137,7 +250,7 @@ ul {
     text-align: center;
     transition: 1s;
     color: var(--light-text-color);
-    background: linear-gradient(rgba(124, 121, 86, 0.7), rgba(93, 95, 72, 0.7)), url('assets/images/fundo1.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(124, 121, 86, 0.7), rgba(136, 138, 116, 0.7)), url('assets/images/fundo1.png') no-repeat center center/cover;
 }
 .hero-section:hover {
     transform: scale(1.05);
@@ -174,11 +287,11 @@ ul {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.6 ease;
 }
 
 .milestone-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px), scaleY(1.10) !important;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -213,7 +326,7 @@ ul {
 
 .step-card:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    transform: translateY(-10px) scale(1.08);
+    transform: translateY(-10px) scale(1.08) !important;
 }
 
 .step-number {
@@ -274,18 +387,20 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: 0;
+    /* Opacidade inicial em 1 para ser visível por padrão */
+    opacity: 1; 
     transition: opacity 0.3s ease;
     padding: 2rem;
     text-align: center;
 }
 
-.aula-card:hover .aula-overlay {
+/* Remova esta regra de hover, pois a sobreposição já está visível */
+/* .aula-card:hover .aula-overlay {
     opacity: 1;
-}
+} */
 
 .aula-card:hover img {
-    transform: scale(1.05); /* Efeito de zoom na imagem */
+    transform: scale(1.08); /* Efeito de zoom na imagem */
 }
 
 .aula-overlay h3 {
@@ -312,6 +427,7 @@ ul {
 
 .aula-button:hover {
     background-color: var(--primary-color);
+    color: white;
 }
 
 /* Seção Contato (Reformulada) */
@@ -362,6 +478,7 @@ ul {
 
 .contact-link:hover {
     background-color: var(--primary-color);
+    color: white;
 }
 
 #contact-form {
